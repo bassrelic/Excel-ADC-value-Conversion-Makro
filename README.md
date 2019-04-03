@@ -12,7 +12,7 @@ How to Use:
     .
     .
 4. Define the number of deimal places you want to cut the value at.
-    ATTENTION: Define a number Smaller then the smallest no. of decimal places!
+    ATTENTION: Define a number Smaller than the smallest no. of decimal places!
 5. Define the range of columns in which your data is stored
 5. OPTIONAL
     Comment the replace section out if you have no need to transform , to .
