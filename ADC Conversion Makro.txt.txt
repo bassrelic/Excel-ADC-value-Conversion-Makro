@@ -1,0 +1,54 @@
+Sub ExportTXT()
+
+    ' DEFINE where to Save
+    Dim strFileName As String
+    strFileName = "C:\Users\XXXX\Desktop\Export.txt"
+    
+    Open strFileName For Output As #1
+    
+    
+    Dim strA1 As String
+    
+    
+    ' DEFINE the worksheetname
+    Dim sheetName As String
+    sheetName = "Sheet1"
+    
+    'DEFINE row (starting at 1)
+    Dim row As Integer
+    row = 3
+    
+    ' DEFINE how many decimal places (must be smaller then smallest amount of decimal places)
+    Dim places As Integer
+    places = 3
+    
+    
+    Dim searchfor As String
+    searchfor = "."
+    Dim pointpos As Integer
+    
+    ' Cells(1, 2) --> 1 = Column; 2 = Row
+    ' DEFINE columns from which you want to extract data
+    Dim column As Integer
+    For column = 5 To 11
+    
+    strA1 = Worksheets(sheetName).Cells(column, row).Value
+    
+    ' replaces "," with "." as decimal place (if needed)
+    strA1 = Replace(strA1, ",", ".")
+    
+    pointpos = InStr(1, strA1, searchfor)
+    pointpos = pointpos + places
+    strA1 = Left(strA1, pointpos)
+
+    ' saving to file
+    Print #1, strA1 & ",";
+    Next column
+    
+    Close #1
+    
+    MsgBox "Finished! Saved at: " & strFileName
+
+End Sub
+
+
